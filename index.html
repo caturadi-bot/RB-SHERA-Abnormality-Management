@@ -3,44 +3,102 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>RB SHERA — Abnormality Management (Selector)</title>
-  <meta name="description" content="Landing page selector untuk RB1 dan RB3. Single-file ready for GitHub Pages.">
+  <title>RB SHERA — Abnormality Management</title>
+
   <style>
     *{ box-sizing:border-box }
-    html,body{ margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; background:#f3e8ff; color:#111 }
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:#f3e8ff;
+    }
 
-    /* WRAPPER */
-    .page{ min-height:100svh; display:flex; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 16px); }
-    .card{ width:100%; max-width:420px; background:#fff; padding:24px; border-radius:16px; text-align:center; box-shadow:0 12px 28px rgba(0,0,0,0.12); position:relative }
+    .page{
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:
+        calc(env(safe-area-inset-top) + 16px)
+        16px
+        calc(env(safe-area-inset-bottom) + 16px);
+    }
+
+    .card{
+      width:100%;
+      max-width:420px;
+      background:#fff;
+      padding:24px;
+      border-radius:16px;
+      text-align:center;
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
+      position:relative;
+    }
+
     .logo{ width:160px; margin-bottom:12px }
     h2{ margin:8px 0 4px; font-size:20px }
     p{ margin:0 0 18px; color:#555 }
 
-    /* Buttons */
-    .btn{ width:100%; padding:14px; margin-bottom:12px; font-size:16px; font-weight:700; border:none; border-radius:10px; color:#fff; cursor:pointer; transition:transform .12s ease,opacity .12s ease }
-    .btn:active{ transform:scale(.98); opacity:.95 }
+    /* BUTTON */
+    .btn{
+      width:100%;
+      padding:14px;
+      margin-bottom:12px;
+      font-size:16px;
+      font-weight:700;
+      border:none;
+      border-radius:10px;
+      color:#fff;
+      cursor:pointer;
+      transition:transform .12s ease,opacity .12s ease;
+    }
+    .btn:active{ transform:scale(.97); opacity:.9 }
 
     .primary{ background:#7B2D8D }
     .green{ background:#16A34A }
     .gray{ background:#4B5563 }
-    .muted{ background:#9CA3AF }
 
-    .split{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
-    .small{ padding:10px; font-size:14px }
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
 
-    .footer-credit{ position:absolute; bottom:12px; left:16px; font-size:11px; color:#6B7280; opacity:.85 }
+    /* BACK BUTTON (DITONJOLKAN) */
+    .back-wrap{
+      margin-top:16px;
+      padding-top:12px;
+      border-top:1px dashed #E5E7EB;
+    }
 
-    /* hide pages */
+    .back-btn{
+      width:100%;
+      padding:12px;
+      font-size:15px;
+      font-weight:700;
+      border-radius:10px;
+      border:2px solid #7B2D8D;
+      background:#F5E9FA;
+      color:#7B2D8D;
+      cursor:pointer;
+    }
+
+    .back-btn:active{ transform:scale(.97) }
+
+    .footer-credit{
+      position:absolute;
+      bottom:12px;
+      left:16px;
+      font-size:11px;
+      color:#6B7280;
+      opacity:.8;
+    }
+
     .view{ display:none }
     .view.active{ display:block }
 
-    /* back link */
-    .back{ background:transparent; border:0; color:#6B7280; font-weight:600; cursor:pointer }
-
-    /* helper for small note */
-    .note{ font-size:13px; color:#6B7280; margin-top:8px }
-
-    @media (min-width:720px){ .card{ padding:32px } }
+    .note{ font-size:13px; color:#6B7280; margin-top:10px }
   </style>
 </head>
 <body>
@@ -48,24 +106,24 @@
 <div class="page">
   <div class="card">
 
-    <!-- LOGO -->
-    <img class="logo" src="https://raw.githubusercontent.com/fahrizhaarifin-bot/rb-shera-assets/main/images.png" alt="RB SHERA Logo">
+    <img class="logo"
+      src="https://raw.githubusercontent.com/fahrizhaarifin-bot/rb-shera-assets/main/images.png"
+      alt="RB SHERA Logo">
 
-    <!-- SELECTOR VIEW -->
+    <!-- SELECTOR -->
     <div id="view-selector" class="view active">
       <h2>Pilih Area</h2>
-      <p>Pilih area untuk masuk ke landing page Abnormality Management.</p>
+      <p>Pilih area Abnormality Management</p>
 
       <div class="split">
         <button class="btn primary" id="to-rb1">🔵 RB1</button>
         <button class="btn gray" id="to-rb3">🟣 RB3</button>
       </div>
 
-      <p class="note">Tip: langsung tekan <code>area rb1</code> atau <code>area rb3</code> untuk masuk ke landing page.</p>
-
+      <p class="note">Akses langsung: <code>?area=rb1</code> atau <code>?area=rb3</code></p>
     </div>
 
-    <!-- RB1 VIEW -->
+    <!-- RB1 -->
     <div id="view-rb1" class="view">
       <h2>Abnormality Management</h2>
       <p>RB-1 Area</p>
@@ -74,12 +132,14 @@
       <button class="btn green" id="rb1-close">✅ Closing Abnormality</button>
       <button class="btn gray" id="rb1-dashboard">📊 Dashboard</button>
 
-      <div style="height:8px"></div>
-      <button class="back small" id="back-from-rb1">← Kembali ke pilihan</button>
+      <div class="back-wrap">
+        <button class="back-btn" id="back-rb1">⬅ Kembali ke Pilihan Area</button>
+      </div>
+
       <div class="footer-credit">Created by Operation Excellence</div>
     </div>
 
-    <!-- RB3 VIEW -->
+    <!-- RB3 -->
     <div id="view-rb3" class="view">
       <h2>Abnormality Management</h2>
       <p>RB-3 Area</p>
@@ -88,8 +148,10 @@
       <button class="btn green" id="rb3-close">✅ Closing Abnormality</button>
       <button class="btn gray" id="rb3-dashboard">📊 Dashboard</button>
 
-      <div style="height:8px"></div>
-      <button class="back small" id="back-from-rb3">← Kembali ke pilihan</button>
+      <div class="back-wrap">
+        <button class="back-btn" id="back-rb3">⬅ Kembali ke Pilihan Area</button>
+      </div>
+
       <div class="footer-credit">Created by Operation Excellence</div>
     </div>
 
@@ -97,9 +159,6 @@
 </div>
 
 <script>
-  /* ======== CONFIG: gform / links ========
-     Ganti value di bawah sesuai link Google Form / Dashboard Anda.
-     Pastikan link lengkap (https://docs.google.com/...) */
   const CONFIG = {
     rb1: {
       create: 'https://docs.google.com/forms/d/1A33oa28I6T_RInn7DWd8JZBpmjDTgLlaPAKNnSMxN9E/viewform',
@@ -107,56 +166,40 @@
       dashboard: 'https://lookerstudio.google.com/reporting/5041ec5b-ebc3-4c5d-ac83-749eb73de92b/page/umwkF'
     },
     rb3: {
-      /* ====== PENTING: ganti link RB3 di sini ====== */
-      create: 'https://docs.google.com/forms/d/e/1FAIpQLSchgGNa9AJXT6CalqQXAjfd32fojv_8jxyrK3zGo2JhxrIsOw/viewform?usp=dialog',
-      close:  'https://docs.google.com/forms/d/e/1FAIpQLSdHy2zKJvBR5oYhq3XRRyKXmO-rg06L9AA7pYOw31tW46zTHQ/viewform?usp=dialog',
-      /* Jika RB3 menggunakan dashboard yang sama, gunakan link yang sama atau ganti */
+      create: 'REPLACE_RB3_CREATE',
+      close:  'REPLACE_RB3_CLOSE',
       dashboard: 'https://lookerstudio.google.com/reporting/5041ec5b-ebc3-4c5d-ac83-749eb73de92b/page/umwkF'
     }
   };
 
-  /* ======== small router / view control ======== */
   const views = {
     selector: document.getElementById('view-selector'),
     rb1: document.getElementById('view-rb1'),
     rb3: document.getElementById('view-rb3')
   };
 
-  function showView(name, pushState = true){
-    Object.values(views).forEach(v => v.classList.remove('active'));
+  function showView(name, push=true){
+    Object.values(views).forEach(v=>v.classList.remove('active'));
     views[name].classList.add('active');
-    // update url for direct linking
-    if(pushState) history.replaceState(null, '', '?' + new URLSearchParams({ area: name }).toString());
+    if(push) history.replaceState(null,'','?area='+name);
   }
 
-  // init button wiring
-  document.getElementById('to-rb1').addEventListener('click', ()=> showView('rb1'));
-  document.getElementById('to-rb3').addEventListener('click', ()=> showView('rb3'));
+  document.getElementById('to-rb1').onclick = ()=>showView('rb1');
+  document.getElementById('to-rb3').onclick = ()=>showView('rb3');
+  document.getElementById('back-rb1').onclick = ()=>showView('selector');
+  document.getElementById('back-rb3').onclick = ()=>showView('selector');
 
-  document.getElementById('back-from-rb1').addEventListener('click', ()=> showView('selector'));
-  document.getElementById('back-from-rb3').addEventListener('click', ()=> showView('selector'));
+  document.getElementById('rb1-create').onclick = ()=>window.open(CONFIG.rb1.create,'_blank');
+  document.getElementById('rb1-close').onclick = ()=>window.open(CONFIG.rb1.close,'_blank');
+  document.getElementById('rb1-dashboard').onclick = ()=>window.open(CONFIG.rb1.dashboard,'_blank');
 
-  // RB1 action buttons
-  document.getElementById('rb1-create').addEventListener('click', ()=> window.open(CONFIG.rb1.create, '_blank'));
-  document.getElementById('rb1-close').addEventListener('click', ()=> window.open(CONFIG.rb1.close, '_blank'));
-  document.getElementById('rb1-dashboard').addEventListener('click', ()=> window.open(CONFIG.rb1.dashboard, '_blank'));
+  document.getElementById('rb3-create').onclick = ()=>window.open(CONFIG.rb3.create,'_blank');
+  document.getElementById('rb3-close').onclick = ()=>window.open(CONFIG.rb3.close,'_blank');
+  document.getElementById('rb3-dashboard').onclick = ()=>window.open(CONFIG.rb3.dashboard,'_blank');
 
-  // RB3 action buttons
-  document.getElementById('rb3-create').addEventListener('click', ()=> window.open(CONFIG.rb3.create, '_blank'));
-  document.getElementById('rb3-close').addEventListener('click', ()=> window.open(CONFIG.rb3.close, '_blank'));
-  document.getElementById('rb3-dashboard').addEventListener('click', ()=> window.open(CONFIG.rb3.dashboard, '_blank'));
-
-  // on load: check query param area for direct link
-  (function(){
-    try{
-      const params = new URLSearchParams(location.search);
-      const area = (params.get('area') || '').toLowerCase();
-      if(area === 'rb1' || area === 'rb3'){
-        showView(area, false);
-      }
-    }catch(e){ /* ignore */ }
-  })();
-
+  const q = new URLSearchParams(location.search).get('area');
+  if(q && views[q]) showView(q,false);
 </script>
+
 </body>
 </html>
