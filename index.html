@@ -1,204 +1,233 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>RB SHERA — Abnormality Management</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RB SHERA — Abnormality Management</title>
 
-  <style>
-    *{ box-sizing:border-box }
-    html,body{
-      margin:0;
-      padding:0;
-      font-family:Arial,Helvetica,sans-serif;
-      background:#f3e8ff;
-    }
+<style>
+*{ box-sizing:border-box }
 
-    .page{
-      min-height:100svh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:
-        calc(env(safe-area-inset-top) + 16px)
-        16px
-        calc(env(safe-area-inset-bottom) + 16px);
-    }
+html,body{
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3e8ff;
+}
 
-    .card{
-      width:100%;
-      max-width:420px;
-      background:#fff;
-      padding:24px;
-      border-radius:16px;
-      text-align:center;
-      box-shadow:0 12px 28px rgba(0,0,0,.12);
-      position:relative;
-    }
+.page{
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:
+    calc(env(safe-area-inset-top) + 16px)
+    16px
+    calc(env(safe-area-inset-bottom) + 16px);
+}
 
-    .logo{ width:160px; margin-bottom:12px }
-    h2{ margin:8px 0 4px; font-size:20px }
-    p{ margin:0 0 18px; color:#555 }
+.card{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  padding:24px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 12px 28px rgba(0,0,0,.12);
+  position:relative;
+}
 
-    /* BUTTON */
-    .btn{
-      width:100%;
-      padding:14px;
-      margin-bottom:12px;
-      font-size:16px;
-      font-weight:700;
-      border:none;
-      border-radius:10px;
-      color:#fff;
-      cursor:pointer;
-      transition:transform .12s ease,opacity .12s ease;
-    }
-    .btn:active{ transform:scale(.97); opacity:.9 }
+.logo{ width:160px; margin-bottom:12px }
+h2{ margin:8px 0 4px; font-size:20px }
+p{ margin:0 0 18px; color:#555 }
 
-    .primary{ background:#7B2D8D }
-    .green{ background:#16A34A }
-    .gray{ background:#4B5563 }
+.btn{
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  font-size:16px;
+  font-weight:700;
+  border:none;
+  border-radius:10px;
+  color:#fff;
+  cursor:pointer;
+  transition:transform .12s ease,opacity .12s ease;
+}
 
-    .split{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-    }
+.btn:active{ transform:scale(.97); opacity:.9 }
 
-    /* BACK BUTTON (DITONJOLKAN) */
-    .back-wrap{
-      margin-top:16px;
-      padding-top:12px;
-      border-top:1px dashed #E5E7EB;
-    }
+.primary{ background:#7B2D8D }
+.green{ background:#16A34A }
+.gray{ background:#4B5563 }
+.blue{ background:#2563EB }
 
-    .back-btn{
-      width:100%;
-      padding:12px;
-      font-size:15px;
-      font-weight:700;
-      border-radius:10px;
-      border:2px solid #7B2D8D;
-      background:#F5E9FA;
-      color:#7B2D8D;
-      cursor:pointer;
-    }
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
 
-    .back-btn:active{ transform:scale(.97) }
+.back-wrap{
+  margin-top:16px;
+  padding-top:12px;
+  border-top:1px dashed #E5E7EB;
+}
 
-    .footer-credit{
-      position:absolute;
-      bottom:12px;
-      left:16px;
-      font-size:11px;
-      color:#6B7280;
-      opacity:.8;
-    }
+.back-btn{
+  width:100%;
+  padding:12px;
+  font-size:15px;
+  font-weight:700;
+  border-radius:10px;
+  border:2px solid #7B2D8D;
+  background:#F5E9FA;
+  color:#7B2D8D;
+  cursor:pointer;
+}
 
-    .view{ display:none }
-    .view.active{ display:block }
+.back-btn:active{ transform:scale(.97) }
 
-    .note{ font-size:13px; color:#6B7280; margin-top:10px }
-  </style>
+.footer-credit{
+  position:absolute;
+  bottom:12px;
+  left:16px;
+  font-size:11px;
+  color:#6B7280;
+  opacity:.8;
+}
+
+.view{ display:none }
+.view.active{ display:block }
+
+.note{ font-size:13px; color:#6B7280; margin-top:10px }
+
+</style>
 </head>
+
 <body>
 
 <div class="page">
-  <div class="card">
+<div class="card">
 
-    <img class="logo"
-      src="https://raw.githubusercontent.com/fahrizhaarifin-bot/rb-shera-assets/main/images.png"
-      alt="RB SHERA Logo">
+<img class="logo"
+src="https://raw.githubusercontent.com/fahrizhaarifin-bot/rb-shera-assets/main/images.png"
+alt="RB SHERA Logo">
 
-    <!-- SELECTOR -->
-    <div id="view-selector" class="view active">
-      <h2>Pilih Area</h2>
-      <p>Pilih area Abnormality Management</p>
+<!-- SELECTOR -->
+<div id="view-selector" class="view active">
 
-      <div class="split">
-        <button class="btn primary" id="to-rb1">🔵 RB1</button>
-        <button class="btn gray" id="to-rb3">🟣 RB3</button>
-      </div>
+<h2>Pilih Area</h2>
+<p>Pilih area Abnormality Management</p>
 
-      <p class="note"><code>Created by Operation Excellence<code></p>
-    </div>
+<div class="split">
+<button class="btn primary" id="to-rb1">🔵 RB1</button>
+<button class="btn gray" id="to-rb3">🟣 RB3</button>
+</div>
 
-    <!-- RB1 -->
-    <div id="view-rb1" class="view">
-      <h2>Abnormality Management</h2>
-      <p>RB-1 Area</p>
+<p class="note"><code>Created by Operation Excellence</code></p>
 
-      <button class="btn primary" id="rb1-create">➕ Create Abnormality</button>
-      <button class="btn green" id="rb1-close">✅ Closing Abnormality</button>
-      <button class="btn gray" id="rb1-dashboard">📊 Dashboard</button>
+</div>
 
-      <div class="back-wrap">
-        <button class="back-btn" id="back-rb1">⬅ Kembali ke Pilihan Area</button>
-      </div>
 
-      <div class="footer-credit">Created by Operation Excellence</div>
-    </div>
+<!-- RB1 -->
+<div id="view-rb1" class="view">
 
-    <!-- RB3 -->
-    <div id="view-rb3" class="view">
-      <h2>Abnormality Management</h2>
-      <p>RB-3 Area</p>
+<h2>Abnormality Management</h2>
+<p>RB-1 Area</p>
 
-      <button class="btn primary" id="rb3-create">➕ Create Abnormality</button>
-      <button class="btn green" id="rb3-close">✅ Closing Abnormality</button>
-      <button class="btn gray" id="rb3-dashboard">📊 Dashboard</button>
+<button class="btn primary" id="rb1-create">➕ Create Abnormality</button>
+<button class="btn green" id="rb1-close">✅ Closing Abnormality</button>
+<button class="btn gray" id="rb1-dashboard">📊 Dashboard</button>
+<button class="btn blue" id="rb1-sheet">📑 Spreadsheet</button>
 
-      <div class="back-wrap">
-        <button class="back-btn" id="back-rb3">⬅ Kembali ke Pilihan Area</button>
-      </div>
+<div class="back-wrap">
+<button class="back-btn" id="back-rb1">⬅ Kembali ke Pilihan Area</button>
+</div>
 
-      <div class="footer-credit">Created by Operation Excellence</div>
-    </div>
+<div class="footer-credit">Created by Operation Excellence</div>
 
-  </div>
+</div>
+
+
+<!-- RB3 -->
+<div id="view-rb3" class="view">
+
+<h2>Abnormality Management</h2>
+<p>RB-3 Area</p>
+
+<button class="btn primary" id="rb3-create">➕ Create Abnormality</button>
+<button class="btn green" id="rb3-close">✅ Closing Abnormality</button>
+<button class="btn gray" id="rb3-dashboard">📊 Dashboard</button>
+<button class="btn blue" id="rb3-sheet">📑 Spreadsheet</button>
+
+<div class="back-wrap">
+<button class="back-btn" id="back-rb3">⬅ Kembali ke Pilihan Area</button>
+</div>
+
+<div class="footer-credit">Created by Operation Excellence</div>
+
+</div>
+
+</div>
 </div>
 
 <script>
-  const CONFIG = {
-    rb1: {
-      create: 'https://docs.google.com/forms/d/1A33oa28I6T_RInn7DWd8JZBpmjDTgLlaPAKNnSMxN9E/viewform',
-      close:  'https://docs.google.com/forms/d/1EewvDHmRgB8QRdw2Uz7PZ1zZ-OhO4AVGXeH964QHONM/viewform',
-      dashboard: 'https://lookerstudio.google.com/reporting/5041ec5b-ebc3-4c5d-ac83-749eb73de92b/page/umwkF'
-    },
-    rb3: {
-      create: 'https://docs.google.com/forms/d/e/1FAIpQLSchgGNa9AJXT6CalqQXAjfd32fojv_8jxyrK3zGo2JhxrIsOw/viewform?usp=dialog',
-      close:  'https://docs.google.com/forms/d/e/1FAIpQLSdHy2zKJvBR5oYhq3XRRyKXmO-rg06L9AA7pYOw31tW46zTHQ/viewform?usp=dialog',
-      dashboard: 'https://lookerstudio.google.com/reporting/d719268c-c9d6-4ab3-84e8-abf9bc8f05eb'
-    }
-  };
 
-  const views = {
-    selector: document.getElementById('view-selector'),
-    rb1: document.getElementById('view-rb1'),
-    rb3: document.getElementById('view-rb3')
-  };
+const CONFIG = {
 
-  function showView(name, push=true){
-    Object.values(views).forEach(v=>v.classList.remove('active'));
-    views[name].classList.add('active');
-    if(push) history.replaceState(null,'','?area='+name);
-  }
+rb1:{
+create:'https://docs.google.com/forms/d/1A33oa28I6T_RInn7DWd8JZBpmjDTgLlaPAKNnSMxN9E/viewform',
+close:'https://docs.google.com/forms/d/1EewvDHmRgB8QRdw2Uz7PZ1zZ-OhO4AVGXeH964QHONM/viewform',
+dashboard:'https://lookerstudio.google.com/reporting/5041ec5b-ebc3-4c5d-ac83-749eb73de92b/page/umwkF',
+sheet:'https://docs.google.com/spreadsheets/d/1Xa5F1hwrozZFxacU3dXn_Ui9siXj3vzb0SXwEAa5zik/edit?gid=1146505316#gid=1146505316'
+},
 
-  document.getElementById('to-rb1').onclick = ()=>showView('rb1');
-  document.getElementById('to-rb3').onclick = ()=>showView('rb3');
-  document.getElementById('back-rb1').onclick = ()=>showView('selector');
-  document.getElementById('back-rb3').onclick = ()=>showView('selector');
+rb3:{
+create:'https://docs.google.com/forms/d/e/1FAIpQLSchgGNa9AJXT6CalqQXAjfd32fojv_8jxyrK3zGo2JhxrIsOw/viewform?usp=dialog',
+close:'https://docs.google.com/forms/d/e/1FAIpQLSdHy2zKJvBR5oYhq3XRRyKXmO-rg06L9AA7pYOw31tW46zTHQ/viewform?usp=dialog',
+dashboard:'https://lookerstudio.google.com/reporting/d719268c-c9d6-4ab3-84e8-abf9bc8f05eb',
+sheet:'https://docs.google.com/spreadsheets/d/1bCedQse3WtX8LiWZ5Lf0bJhZcc-w8APs8KfbuykO1_k/edit?gid=1146505316#gid=1146505316'
+}
 
-  document.getElementById('rb1-create').onclick = ()=>window.open(CONFIG.rb1.create,'_blank');
-  document.getElementById('rb1-close').onclick = ()=>window.open(CONFIG.rb1.close,'_blank');
-  document.getElementById('rb1-dashboard').onclick = ()=>window.open(CONFIG.rb1.dashboard,'_blank');
+};
 
-  document.getElementById('rb3-create').onclick = ()=>window.open(CONFIG.rb3.create,'_blank');
-  document.getElementById('rb3-close').onclick = ()=>window.open(CONFIG.rb3.close,'_blank');
-  document.getElementById('rb3-dashboard').onclick = ()=>window.open(CONFIG.rb3.dashboard,'_blank');
 
-  const q = new URLSearchParams(location.search).get('area');
-  if(q && views[q]) showView(q,false);
+const views={
+selector:document.getElementById('view-selector'),
+rb1:document.getElementById('view-rb1'),
+rb3:document.getElementById('view-rb3')
+};
+
+function showView(name,push=true){
+
+Object.values(views).forEach(v=>v.classList.remove('active'));
+views[name].classList.add('active');
+
+if(push) history.replaceState(null,'','?area='+name);
+
+}
+
+document.getElementById('to-rb1').onclick=()=>showView('rb1');
+document.getElementById('to-rb3').onclick=()=>showView('rb3');
+
+document.getElementById('back-rb1').onclick=()=>showView('selector');
+document.getElementById('back-rb3').onclick=()=>showView('selector');
+
+
+document.getElementById('rb1-create').onclick=()=>window.open(CONFIG.rb1.create,'_blank');
+document.getElementById('rb1-close').onclick=()=>window.open(CONFIG.rb1.close,'_blank');
+document.getElementById('rb1-dashboard').onclick=()=>window.open(CONFIG.rb1.dashboard,'_blank');
+document.getElementById('rb1-sheet').onclick=()=>window.open(CONFIG.rb1.sheet,'_blank');
+
+document.getElementById('rb3-create').onclick=()=>window.open(CONFIG.rb3.create,'_blank');
+document.getElementById('rb3-close').onclick=()=>window.open(CONFIG.rb3.close,'_blank');
+document.getElementById('rb3-dashboard').onclick=()=>window.open(CONFIG.rb3.dashboard,'_blank');
+document.getElementById('rb3-sheet').onclick=()=>window.open(CONFIG.rb3.sheet,'_blank');
+
+
+const q=new URLSearchParams(location.search).get('area');
+if(q && views[q]) showView(q,false);
+
 </script>
 
 </body>
